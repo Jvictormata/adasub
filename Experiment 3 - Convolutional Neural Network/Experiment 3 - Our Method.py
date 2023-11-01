@@ -7,7 +7,6 @@ import numpy as np
 
 from torch.optim import Optimizer
 import time
-from resnet import resnet20
 import os
 
 
@@ -207,7 +206,7 @@ def force_cudnn_initialization():
     torch.nn.functional.conv2d(torch.zeros(s, s, s, s, device=device), torch.zeros(s, s, s, s, device=device))
 force_cudnn_initialization()
 
-model = resnet20()
+model = ConvNet()
 model.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = ourMethod(model.parameters(), lr=learning_rate, n_directions=n_directions, device=device)
